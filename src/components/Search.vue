@@ -3,18 +3,23 @@
     <h1><strong>Github</strong> <i>Search</i></h1>
     <input type="text" v-model="username">  
     <button @click="search()">Pesquisar</button>
-    <UserDetails v-bind:userData="userData" />
+    <div class="container">
+      <UserDetails v-bind:userData="userData" class="userDetails"/>
+      <UserRepositories v-bind:repositories="userData.repos" class="userRepositories"/>
+    </div>
   </div>
 </template>
 
 <script>
 
 import UserDetails from './UserDetails';
+import UserRepositories from './UserRepositories';
 
 export default {
   name: 'Search',
   components: {
     UserDetails,
+    UserRepositories
   },
   data() {
     return {
@@ -48,6 +53,11 @@ export default {
           this.userData.repos.forEach(element => {
             this.userData.stargazers_count += element.stargazers_count;
           });
+          this.userData.repos.sort(
+            function(a, b){
+              return b.stargazers_count - a.stargazers_count;
+            }
+          )
           console.log(this.userData);
         })
       )
@@ -59,5 +69,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .container{
+    display: flex;
+  }
+  .userDetails {
+    flex: 1;
+  }
+  .userRepositories {
+    flex: 3;
+    overflow-y: scroll;
+    height: 80vh;
+  }
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
 </style>
