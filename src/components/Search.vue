@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Github <i>Search</i></h1>
+    <h1><strong>Github</strong> <i>Search</i></h1>
     <input type="text" v-model="username">  
     <button @click="search()">Pesquisar</button>
     <UserDetails v-bind:userData="userData" />
