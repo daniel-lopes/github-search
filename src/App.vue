@@ -14,8 +14,7 @@ export default {
 <style>
 #app {
   display: flex;
-  height: 100vh;
-  width: 100%;
+  min-height: 100vh;
   align-items: center;
   justify-content: center;
   font-family: Avenir, Helvetica, Arial, sans-serif;
