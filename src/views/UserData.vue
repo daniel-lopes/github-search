@@ -1,20 +1,34 @@
 <template>
   <div>
     <h1><strong>Github</strong> <i>Search</i></h1>
-    <input type="text" v-model="username">
+    <input type="text" v-model="username">  
     <button @click="search()">Pesquisar</button>
+    <div class="container">
+      <UserDetails v-bind:userData="userData" class="userDetails"/>
+      <UserRepositories v-bind:repositories="userData.repos" class="userRepositories"/>
+    </div>
   </div>
 </template>
 
 <script>
 
+import UserDetails from '../components/UserDetails';
+import UserRepositories from '../components/UserRepositories';
+
 export default {
-  name: 'Search',
+  name: 'UserData',
+  components: {
+    UserDetails,
+    UserRepositories
+  },
   data() {
     return {
-      username: 'daniel-lopes',
-      userData: {},
+      username: '',
+      userData: JSON.parse(this.$route.params.userData)
     }
+  },
+  beforeMount() {
+    console.log(JSON.parse(this.$route.params.userData))
   },
   methods: {
     search: function(){
@@ -33,6 +47,7 @@ export default {
           followers: result.followers,
           repos: null,
         }
+        // console.log(result);
       }).then(
         fetch(`https://api.github.com/users/${this.username}/repos`)
         .then(response => response.json())
@@ -46,8 +61,7 @@ export default {
               return b.stargazers_count - a.stargazers_count;
             }
           )
-          // console.log(this.userData);
-          this.$router.push({ name: 'user-data', params: { userData: JSON.stringify(this.userData) }})
+          console.log(this.userData);
         })
       )
     }
@@ -55,6 +69,20 @@ export default {
 }
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .container{
+    display: flex;
+  }
+  .userDetails {
+    flex: 1;
+  }
+  .userRepositories {
+    flex: 3;
+    overflow-y: scroll;
+    height: 80vh;
+  }
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
 </style>
