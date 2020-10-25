@@ -58,15 +58,21 @@ export default {
 
 <style scoped>
   .search-input {
-    width: 30%;
+    width: calc(100% - 85px);
     border-radius: 0px;
+    height: 40px;
+    padding-left: 10px;
   }
   .icon {
     color: #fff;
-    font-size: 14px;;
+    font-size: 20px;;
+    font-weight: lighter;
   }
   button {
     background-color: #000;
-    width: 65px;
+    margin-top: 1px;
+    width: 85px;
+    height: 40px;
+    border: 0px;
   }
 </style>

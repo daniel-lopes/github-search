@@ -1,11 +1,11 @@
 import { createWebHistory, createRouter } from "vue-router";
 import UserData from "../views/UserData"
-import Search from "../components/Search"
+import Main from "../views/Main"
 
 const routes = [
   {
     path: "/",
-    component: Search,
+    component: Main,
   },
   {
     path: "/user-data/:?user-data",
