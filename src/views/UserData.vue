@@ -61,7 +61,7 @@ export default {
               return b.stargazers_count - a.stargazers_count;
             }
           )
-          console.log(this.userData);
+          // console.log(this.userData);
         })
       )
     }

@@ -1,8 +1,9 @@
 <template>
   <div>
-    <h1><strong>Github</strong> <i>Search</i></h1>
-    <input type="text" v-model="username">
-    <button @click="search()">Pesquisar</button>
+    <input type="text" v-model="username" class="search-input">
+    <button @click="search()">
+      <font-awesome-icon icon="search" class="icon"/>
+    </button>
   </div>
 </template>
 
@@ -12,7 +13,7 @@ export default {
   name: 'Search',
   data() {
     return {
-      username: 'daniel-lopes',
+      username: '',
       userData: {},
     }
   },
@@ -47,7 +48,7 @@ export default {
             }
           )
           // console.log(this.userData);
-          this.$router.push({ name: 'user-data', params: { userData: JSON.stringify(this.userData) }})
+          this.$router.push({ name: 'user-data', params: { userData: JSON.stringify(this.userData) } })
         })
       )
     }
@@ -56,5 +57,16 @@ export default {
 </script>
 
 <style scoped>
-
+  .search-input {
+    width: 30%;
+    border-radius: 0px;
+  }
+  .icon {
+    color: #fff;
+    font-size: 14px;;
+  }
+  button {
+    background-color: #000;
+    width: 65px;
+  }
 </style>
