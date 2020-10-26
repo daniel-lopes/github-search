@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <form>
     <input type="text" v-model="username" class="search-input" v-on:keyup.enter="search()">
     <button @click="search()">
       <font-awesome-icon icon="search" class="icon"/>
     </button>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -65,6 +65,10 @@ export default {
         })
     },
     search: async function(){
+      if(!this.username){
+        alert('Por favor, preencha o campo de busca!');
+        return;
+      }
       await this.getUser();
       if(this.userData){
         await this.getUserRepository();
