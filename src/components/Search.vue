@@ -9,6 +9,8 @@
 
 <script>
 
+import axios from 'axios';
+
 export default {
   name: 'Search',
   data() {
@@ -19,10 +21,14 @@ export default {
   },
   methods: {
     search: function(){
-      fetch(`https://api.github.com/users/${this.username}`)
-      .then(response => response.json())
-      .then(result => {
-        // this.userData = result;
+      axios.get(`https://api.github.com/users/${this.username}`)
+      .then(response =>  {
+
+        const result = response.data;
+        if(result.message){
+          this.$router.push({ name: 'notFound', params: { catchAll: 'user-not-found'} })
+        }
+
         this.userData = {
           avatar_url: result.avatar_url,
           name: result.name,
@@ -34,20 +40,23 @@ export default {
           followers: result.followers,
           repos: null,
         }
-      }).then(
-        fetch(`https://api.github.com/users/${this.username}/repos`)
-        .then(response => response.json())
-        .then(result => {
+      })      
+      .then(
+        axios.get(`https://api.github.com/users/${this.username}/repos`)
+        .then(response => {
+
+          const result = response.data;
           this.userData.repos = result;
           this.userData.repos.forEach(element => {
             this.userData.stargazers_count += element.stargazers_count;
           });
+
           this.userData.repos.sort(
             function(a, b){
               return b.stargazers_count - a.stargazers_count;
             }
           )
-          console.log(this.userData);
+
           this.$router.push({ name: 'user-data', params: { userData: JSON.stringify(this.userData) } })
         })
       )

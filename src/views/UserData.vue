@@ -47,7 +47,7 @@ export default {
   }
   .title {
     flex: 2;
-    margin-left: 11px;
+    margin-left: 12px;
   }
   .search {
     flex: 2;

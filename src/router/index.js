@@ -1,6 +1,7 @@
-import { createWebHistory, createRouter } from "vue-router";
-import UserData from "../views/UserData"
-import Main from "../views/Main"
+import { createWebHistory, createRouter } from 'vue-router';
+import UserData from '../views/UserData';
+import Main from '../views/Main';
+import NotFound from '../views/NotFound' 
 
 const routes = [
   {
@@ -8,9 +9,14 @@ const routes = [
     component: Main,
   },
   {
-    path: "/user-data/:?user-data",
+    path: "/user-data/:?userData",
     name: "user-data",
     component: UserData
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: 'notFound',
+    component: NotFound,
   }
 ];
 
