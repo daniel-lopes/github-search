@@ -18,6 +18,7 @@ export default {
 </script>
 
 <style scoped>
+
   .container {
     display: flex;
     flex-direction: column;
@@ -27,15 +28,18 @@ export default {
     width: 100vh;
   }
   h1 {
-    font-size: 55px;
-    font-weight: 550;
+    font-family: RobotoMono;
+    font-size: 64px;
+    font-weight: 700;
+    color: #000;
   }
   span {
-    font-weight: normal;
-    margin-left: 15px;
-    font-style: oblique;
+    font-family: RubikLightItalic;
+    font-weight: 300;
+    margin-left: 0px;
   }
   .search {
-    width: 95%;
+    width: 701px;
+    margin-top: 1px;
   }
 </style>

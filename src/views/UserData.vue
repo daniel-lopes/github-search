@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="header">
-      <h1 class="title"><strong>Github</strong> <i>Search</i></h1>
+      <h1><strong>Github</strong> <span>Search</span></h1>
       <Search class="search"/>
     </div>
     <div class="page">
@@ -38,16 +38,18 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .header {
     display: flex;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 28px;
+    margin-bottom: 28px;
   }
-  .title {
+  h1 {
     flex: 2;
     margin-left: 12px;
+    font-family: RobotoMono;
+    font-weight: 700;
+    font-size: 42px;
   }
   .search {
     flex: 2;
@@ -62,6 +64,11 @@ export default {
     flex: 3;
     overflow-y: scroll;
     height: 80vh;
+    margin-left: 56px;
+  }
+  span {
+    font-family: RubikLightItalic;
+    font-weight: 300;
   }
   ::-webkit-scrollbar {
     width: 0px;

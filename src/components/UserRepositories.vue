@@ -3,8 +3,8 @@
     <div v-for="repository in repositories" v-bind:key="repository.id" class="container">
       <div class="primarySource mb-2"> {{ repository.name }} </div>
       <div v-if="repository.description" class="secondarySource mb-2"> {{ repository.description }} </div>
-      <div class="secondarySource mt-1 mb-5">
-        <font-awesome-icon :icon="['far', 'star']" class="icon" />
+      <div class="secondarySource mt-1 marginB44">
+        <font-awesome-icon :icon="['far', 'star']" class="icon mr-1" />
         {{ repository.stargazers_count}}
       </div>
     </div>
@@ -22,26 +22,16 @@ export default {
 </script>
 
 <style scoped>
-
-  @font-face {
-    font-family: MPLUSRounded1cRegular;
-    src: url('../assets/fonts/MPLUSRounded1c-Regular.ttf');
-  }
   .container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-family: MPLUSRounded1cRegular;
     line-height: 1;
   }
-  .primarySource {
-    font-size: 30px;
+  .marginB44 {
+    margin-bottom: 44px;
   }
-  .secondarySource  {
-    font-size: 25px;
-    color: #757575;
-  }
-  .icon {
-    color: #000;
+  .secondarySource {
+    line-height: 1.2;
   }
 </style>
