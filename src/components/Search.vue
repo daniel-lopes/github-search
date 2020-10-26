@@ -1,7 +1,7 @@
 <template>
-  <form>
+  <form @submit.prevent="search()">
     <input type="text" v-model="username" class="search-input" v-on:keyup.enter="search()">
-    <button @click="search()">
+    <button>
       <font-awesome-icon icon="search" class="icon"/>
     </button>
   </form>
